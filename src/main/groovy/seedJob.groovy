@@ -5,7 +5,7 @@ GITLAB_URL = 'https://gitlab.schange.com'
 GIT_CREDENCIALS = 'ea7d2a7d-8582-4a66-9143-6047f0225528'
 // Personal access token created in Gitlab https://gitlab.schange.com/profile/personal_access_tokens
 // used for calling Gitlab API
-PRIVATE_TOKEN = '1vo7PQx1ctpac8x-o8Ma'
+PRIVATE_TOKEN = '2DCUXerSEtzk8NhxdhS9'
 
 SONAR_URL = 'http://sonarqube.schange.com'
 JENKINS_URL = 'http://10.48.77.35:8080/'
