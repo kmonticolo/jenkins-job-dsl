@@ -203,6 +203,7 @@ private def addGitlabWebhook(String encodedName, String jobName, String branch) 
         HttpURLConnection connection = (HttpURLConnection) webhookAddUrl.openConnection()
         connection.setRequestMethod("POST")
         connection.connect()
+        println("Response: ${connection.responseCode}")
     }
 }
 
