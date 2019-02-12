@@ -8,7 +8,7 @@ GIT_CREDENCIALS = 'ea7d2a7d-8582-4a66-9143-6047f0225528'
 PRIVATE_TOKEN = '2DCUXerSEtzk8NhxdhS9'
 
 SONAR_URL = 'http://sonarqube.schange.com'
-JENKINS_URL = 'http://10.48.77.35:8080/'
+JENKINS_URL = 'http://10.48.77.35:8080'
 
 // To
 String SLACK_TOKEN = 'OzkEFmPqIQFCYsWw8nGkRftU'
