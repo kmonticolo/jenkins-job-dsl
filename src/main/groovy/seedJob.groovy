@@ -1,28 +1,33 @@
 import groovy.json.JsonSlurper
 
-GITLAB_URL = 'http://gitlab'
+GITLAB_URL = 'https://gitlab.schange.com'
 // id of git user credentials in Jenkins, will be used in Checkout stage
-GIT_CREDENCIALS = 'gitlab1'
+GIT_CREDENCIALS = 'ea7d2a7d-8582-4a66-9143-6047f0225528'
 // Personal access token created in Gitlab https://gitlab.schange.com/profile/personal_access_tokens
 // used for calling Gitlab API
-PRIVATE_TOKEN = 'PAJekUnGzAegmzXmB4av'
+PRIVATE_TOKEN = '1vo7PQx1ctpac8x-o8Ma'
 
-SONAR_URL = 'http://sonarqube:9000'
-JENKINS_URL = 'http://jenkins:8080'
+SONAR_URL = 'http://sonarqube.schange.com'
+JENKINS_URL = 'http://10.48.77.35:8080/'
 
 // To
 String SLACK_TOKEN = 'OzkEFmPqIQFCYsWw8nGkRftU'
 // Name of job that it is running below script
-String SEED_JOB_NAME = 'Seed Job'
+String SEED_JOB_NAME = 'dsl-seed-job'
 // View which contains all DSL-created jobs
-String VIEW_NAME = 'java-jobs2'
+String VIEW_NAME = 'dsl-jobs'
 
 // Main script configuration: name - path to project in Gitlab, kit - name of job that must be triggered after successful build (can be null)
-PROJECTS = [[name: "root/project1", kit: "kit1"],
-            [name: "root/project2", kit: "kit1"],
-            [name: "root/test-project", kit: null]]
+PROJECTS = [[name: "seachange/adv-imsv-inserter", kit: null],
+            [name: "seachange/adv-ads", kit: null],
+            [name: "seachange/adv-adr", kit: null],
+            [name: "seachange/adv-tomcat-base", kit: null],
+            [name: "seachange/adv-imsv-mmc-plugin", kit: null],
+            [name: "seachange/adv-imsv-esam", kit: null],
+            [name: "seachange/adv-common", kit: null]
+]
 
-String[] jobNames = new String[0]
+String[] jobNames = [SEED_JOB_NAME]
 
 PROJECTS.each {
     String kitJob = it.kit
@@ -138,10 +143,10 @@ private Object getProjectInfo(encodedName) {
 }
 
 private String createJobName(String projectName, String branchName) {
-    def name = projectName + " pipeline"
+    def name = projectName
     if (branchName.startsWith("release")) {
         def version = branchName.substring(branchName.indexOf('/') + 1)
-        name += " " + version
+        name += "-" + version
     }
     name
 }
