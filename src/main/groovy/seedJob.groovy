@@ -86,7 +86,7 @@ try {
         }
         stage('Test') {
             ${createTestCommand(branch)}
-            junit allowEmptyResults: true, 'target/surefire-reports/TEST*.xml'
+            junit allowEmptyResults: true, testResults: 'target/surefire-reports/TEST*.xml'
         }
         stage('Build') {
             sh './mvnw package verify -DskipTests'
@@ -151,8 +151,8 @@ private String createJobName(String projectName, String branchName) {
 private String createTestCommand(String branch) {
     if (branch == 'master') {
         return """withSonarQubeEnv {
-                    sh "./mvnw clean test sonar:sonar -Dsonar.host.url=${SONAR_URL}"
-                }"""
+                sh "./mvnw clean test sonar:sonar -Dsonar.host.url=${SONAR_URL}"
+            }"""
     }
     return "sh './mvnw clean test'"
 }
