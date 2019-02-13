@@ -85,11 +85,8 @@ try {
             }.flatten()
         }
         stage('Test') {
-            try {
-                ${createTestCommand(branch)}
-            } finally {
-                junit 'target/surefire-reports/TEST*.xml'
-            }
+            ${createTestCommand(branch)}
+            junit allowEmptyResults: true, 'target/surefire-reports/TEST*.xml'
         }
         stage('Build') {
             sh './mvnw package verify -DskipTests'
